@@ -27,6 +27,12 @@ pipeline {
                     }
             }
         }
+		stage('docker login') {
+				steps {
+					sh "docker login -u sanjeev0181 -padityasanjeev"
+				
+				}
+			}
 	        
     }
 }
