@@ -11,5 +11,14 @@ pipeline {
 			sh 'mvn clean package'
 			}
 		}
+		stage("Sonarqube Build Analysis") {
+                steps {
+                    script {
+                        withSonarQubeEnv(credentialsId: 'admin') {
+                           sh 'mvn sonar:sonar
+                        }
+                    }
+                }
+            }
 	 }
 }
