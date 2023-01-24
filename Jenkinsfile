@@ -29,10 +29,13 @@ pipeline {
         }
 		stage('docker login') {
 				steps {
-					sh "docker login -u sanjeev0181 -padityasanjeev"
+					withCredentials([string(credentialsId: 'Dockerfile-DD', variable: 'Dockerfile')]) {
+					sh "docker login -u sanjeev0181 -p$Dockerfile"
+				    }
 				
 				}
 			}
 	        
     }
 }
+
